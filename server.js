@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 5000;
 const db = require('./database/connect');
 const getMaterials = require('./routes/GET/getMaterial');
 const saveMaterial = require('./routes/PORT/saveMaterial');
+const cors = require('cors');
+
 db.connect();
 /**
  * Middleware
@@ -14,7 +16,7 @@ app.use(express.text({ extended: false }));
 /**
  * Routers - GET
  */
-app.use('/', getMaterials);
+app.use('/', cors(), getMaterials);
 /**
  * Routers - POST
  */
